@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LearnFlow</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400..900&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Lora:ital,wght@0,400..700;1,400..700&family=Noto+Serif+Georgian:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="km.css">
+</head>
+<body>
+    <div id="chat-icon" onclick="toggleChat()">💬</div>
+
+<!-- Fenêtre du chatbot -->
+<div id="chat-container">
+    <div id="chat-header">💬 Bonjour, je suis PIXIE</div>
+    <div id="chat-body"></div>
+    <div id="chat-categories"></div>
+    <div id="chat-input">
+        <input type="text" id="user-input" placeholder="Tapez un numéro...">
+        <button id="send-btn" onclick="sendMessage()">Envoyer</button>
+    </div>
+</div>
+
+<script>
+    let chatContainer = document.getElementById("chat-container");
+    let chatBody = document.getElementById("chat-body");
+    let chatCategories = document.getElementById("chat-categories");
+    let userInput = document.getElementById("user-input");
+    
+    // Liste des questions et réponses
+    const questions = {
+        "1": {
+            "title": "Détails sur les filières",
+            "questions": {
+                "1": "Quelles sont les filières disponibles ?",
+                "2": "Quelle est la différence entre les filières ?"
+            },
+            "answers": {
+                "1": "Les filières sont : Ingénierie des Connaissances et Science des Données (ICSD),<br> Ingénierie de l'Information Numérique (IIN),<br> Ingénierie de la Sécurité des Systèmes d'Information et Cyberdéfense (ISSIC), <br>Ingénierie des Systèmes d'Information et de la Transformation Digitale (ISITD).",
+                "2": "Chaque filière se spécialise dans un domaine, ICSD forme les étudiants à l'analyse et à la modélisation des données ,et pour IIN forme aux métiers de l'information numérique en alliant informatique et sciences de l'information, concernant la filière ISITD elle vise à fournir des professionnels technologiques qualifiés et pour la filière ISSIC forme des ingénieurs en cybersécurité à travers une formation complète alliant transformation digitale et cybersécurité.<br> Pour plus d'informations veillez consulter la rubrique ."
+            }
+        },
+        "2": {
+            "title": "Vie étudiante et événements",
+            "questions": {
+                "1": "Y a-t-il des clubs étudiants ?",
+                "2": "Comment integrer les clubs ?"
+            },
+            "answers": {
+                "1": "Oui, voici quelques clubs JLM ESI, JCMP ESI, ESI_TV et d'autre, vous trouverez plus d'informations dans la zone clubs de la page web.",
+                "2": "L'integration des clubs se fait au debut de l'annee au cours de la journee d'integration ou bien vous pouvez contacter le presidant de chaque club vous trouverez les contacts dans la zone clubs de la page"
+            }
+        },
+        "3": {
+            "title": "Utilisation du site Workflow",
+            "questions": {
+                "1": "Comment contribuer au workflow ?",
+                "2": "Puis-je ajouter mes propres ressources ?"
+            },
+            "answers": {
+                "1": "Vous pouvez contribuer en ...",
+                "2": "Oui, vous pouvez ajouter des ressources en ..."
+            }
+        }
+    };
+
+    let step = 0;
+    let selectedCategory = "";
+    let chatOpened = false; // Variable pour suivre l'ouverture
+
+    function toggleChat() {
+        chatContainer.style.display = chatContainer.style.display === "none" ? "flex" : "none";
+        
+        // Afficher le message d'introduction seulement si c'est la première ouverture
+        if (!chatOpened) {
+            displayMessage("PEXIE", "Choisissez une catégorie :");
+            displayCategories();
+            chatOpened = true;
+        }
+    }
+
+    function displayCategories() {
+        for (let key in questions) {
+            let categoryButton = document.createElement("span");
+            categoryButton.classList.add("question-button");
+            categoryButton.textContent = `${key}️⃣ ${questions[key].title}`;
+            categoryButton.onclick = () => selectCategory(key);
+            chatCategories.appendChild(categoryButton);
+        }
+    }
+
+    function selectCategory(categoryNumber) {
+        selectedCategory = categoryNumber;
+        step = 1;
+        let category = questions[categoryNumber];
+        let response = `Vous avez choisi : ${category.title}<br>Choisissez une question :`;
+        for (let key in category.questions) {
+            response += `<br><span class="question-button" onclick="selectQuestion('${key}')">${key}️⃣ ${category.questions[key]}</span>`;
+        }
+        displayMessage("PEXIE", response);
+        chatCategories.innerHTML = ""; // Effacer les catégories
+    }
+
+    function sendMessage() {
+        let message = userInput.value.trim();
+        if (message === "") return;
+
+        displayMessage("Vous", message);
+        userInput.value = "";
+
+        if (step === 1 && questions[selectedCategory].answers[message]) {
+            displayMessage("PEXIE", questions[selectedCategory].answers[message]);
+            step = 0; // Retour à la sélection des catégories
+       
+    }
+     else {
+        displayMessage("PEXIE", questions[selectedCategory].answers[message]);
+        }
+}
+
+    function selectQuestion(questionNumber) {
+        userInput.value = questionNumber;
+        sendMessage();
+    }
+
+    function displayMessage(sender, text) {
+        chatBody.innerHTML += `<p><strong>${sender}:</strong> ${text}</p>`;
+        chatBody.scrollTop = chatBody.scrollHeight;
+    }
+</script>
+
+
+    
+
+
+  <div class="head">
+    <nav class="navbar">
+        <div class="logo">
+            <img src="logo1.png" alt="Logo">
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#Academics">Academics</a></li>
+            <li><a href="#Student services">Student services</a></li>
+            <li><a href="#Blogs">Blogs</a></li>
+            <li><a href="#Contact">Contact</a></li>
+        </ul>
+    </nav>
+    <section class="hero">
+        <h1>Learn, Share, Succeed - Together!</h1>
+        <p>LearnFlow Academic Exchange : your hub for collaborative Learning & success</p>
+        <button>Join Our Community</button>
+    </section>
+  </div>
+  <section class="about-section">
+   <div class="about-container">
+    <div class="about-images">
+       <img src="esi1.jpg" class="img1">
+       <img src="esi2.jpg" class="img2">
+      </div>
+      <div class="about-text">
+         <h2>About Us</h2>
+         <p>
+          <em>Welcome to LearnFlow Academic Exchange, the ultimate platform for students to exchange knowledge, 
+          access academic resources, and grow together. 
+          Whether you're looking for study materials, old exams, co-op work opportunities, or a space to collaborate on projects, 
+          we've got you covered.</em>
+        </p>
+        <p>
+          <em>Join a community of students who believe in helping each other thrive—because learning is better when we do it together!</em>
+        </p>
+        <a href="#" class="program-link">View the program ↗</a>
+      </div>
+  </div>
+  </section>
+  <section class="stats-section">
+    <div class="stat">
+        <h1>200,000</h1>
+        <p>UNDERGRADUATE <br> STUDENTS</p>
+    </div>
+    <div class="stat">
+        <h1>NO.1</h1>
+        <p>ACADEMIC RESOURCES</p>
+    </div>
+    <div class="stat">
+        <h1>16,000</h1>
+        <p>UNDERGRADUATE <br> STUDENTS</p>
+    </div>
+  </section>
+  <section class="campus-life">
+    <div class="campus-text">
+        <h1>CAMPUS LIFE AT ESI:</h1>
+        <p><em>École Supérieure d'Informatique (ESI) offers a vibrant mix of learning, collaboration, and innovation. Whether it's coding, research, or student events, there&apos;s always something to explore. Grow, connect, and thrive!</em>
+        </p>
+    </div>
+
+    <div class="campus-options">
+        <div class="option">
+            <div class="option-text">
+                <h2>Student Life</h2>
+                <p>Building a vibrant community of creative and accomplished people from around.</p>
+            </div>
+            <div class="arrow"><pre>  ↗</pre></div>
+        </div>
+
+        <div class="option">
+            <div class="option-text">
+                <h2>Arts & Culture</h2>
+                <p>Building a vibrant community of creative and accomplished people from around.</p>
+            </div>
+            <div class="arrow">↗</div>
+        </div>
+
+        <div class="option">
+            <div class="option-text">
+                <h2>Athletics</h2>
+                <p>Building a vibrant community of creative and accomplished people from around.</p>
+            </div>
+            <div class="arrow">↗</div>
+        </div>
+    </div>
+</section>
+<section class="feedback-section">
+  <div class="feedback-text">
+      <h1>Student FeedBack</h1>
+      <p>Your opinion matters, and by providing feedback, you contribute to the continuous enhancement 
+         of our academic programs, support services, and campus life.</p>
+      <a href="#" class="feedback-btn">Give us your feedBack</a>
+  </div>
+
+    <div class="feedback-cards">
+      <div class="feedback-card">
+          <p>Your opinion matters, and by providing feedback, you contribute to the continuous 
+             enhancement of our academic programs, support services, and campus life.</p>
+          <span class="name">Name</span>
+          <span class="year">ISCD, 1st year</span>
+      </div>
+
+      <div class="feedback-card">
+          <p>Your opinion matters, and by providing feedback, you contribute to the continuous 
+             enhancement of our academic programs, support services, and campus life.</p>
+          <span class="name">Name</span>
+          <span class="year">ISSIC, 2nd year</span>
+      </div>
+    </div>
+  </section>
+  <footer class="footer">
+    <div class="footer-container">
+        <div class="footer-about">
+            <img src="logo1.png" class="footer-logo">
+            <p>We are passionate about education, dedicated to providing high-quality resources for learners of all backgrounds.</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-links">
+            <div class="footer-column">
+                <h3>Our Campus</h3>
+                <a href="#">Academic</a>
+                <a href="#">Athletics</a>
+                <a href="#">Campus Life</a>
+                <a href="#">Research</a>
+                <a href="#">Academic Area</a>
+            </div>
+
+            <div class="footer-column">
+                <h3>Pages</h3>
+                <a href="#">About</a>
+                <a href="#">Tuition Fee</a>
+                <a href="#">Alumni</a>
+                <a href="#">Faculty Staff</a>
+                <a href="#">Event</a>
+            </div>
+        </div>
+
+        <div class="footer-quick-links">
+            <h3>Quick Link</h3>
+            <a href="#" class="apply-btn">join us</a>
+            <a href="#" class="scholar-btn">Scholar</a>
+        </div>
+    </div>
+  </footer>
+  <footer>
+    <p>&copy; 2025 LearnFlow. All rights reserved.</p>  
+  </footer>
+</body>
+</html>
