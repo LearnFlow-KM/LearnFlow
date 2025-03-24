@@ -4,7 +4,7 @@ body {
   padding: 0;
 }
 .head{
-background: url('head.png') no-repeat center center/cover;
+background: url('./images_KM/head.png') no-repeat center center/cover;
 }
 .navbar {
   display: flex;
