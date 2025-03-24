@@ -1,0 +1,296 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 10px 20px;
+  background-color: #ffffff;
+}
+
+.logo {
+  display: flex;
+  align-items: left;
+  margin-bottom: 10px;
+}
+
+.logo img {
+  width: 200px;
+  margin-right: 0px;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  margin: 0 15px;
+  text-align: center;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #002542;
+  font-size: 20px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.hero {
+  text-align: center;
+  padding: 150px 20px;
+  font-size: 1.5em;
+  background: url('stage.png') no-repeat center center/cover;
+  
+}
+
+.hero h1 {
+  font-size: 3em;
+  font-family: "Noto Serif Georgian", serif;
+  font-optical-sizing: auto;
+  font-weight: weight;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  margin: 0 ;
+  color: #1b1e31;
+}
+
+.hero p {
+  margin: 20px 0;
+  font-size: 1em;
+  font-family: "Libre Baskerville", serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #001f37;
+  margin-bottom: 80px;
+}
+.about-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 10%;
+  }
+  
+  .about-container {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  }
+  
+  .about-images {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  }
+  
+  .img1 {
+  width: 400px;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+  }
+  .img2 {
+  height: 300px;
+  width: 600px;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+  }
+  .about-text {
+  font-optical-sizing: auto;
+  max-width: 700px;
+  margin-left: 200px;
+  }
+  
+  .about-text h2 {
+  font-size: 4em;
+  font-family: "Cinzel Decorative", serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #1e2a41;
+  margin-bottom: 60px;
+  }
+  
+  .about-text p {
+  font-size: 18px;
+  color: #333;
+  line-height: 1.8;
+  }
+  
+  .about-text em {
+  font-style: italic;
+  }
+  .inscription-section {
+    background-color: #f0f0f0;
+    color: #1e2a41;
+    text-align: center;
+    padding: 60px 10%;
+  }
+  
+  .inscription-section h1 {
+    font-size: 4em;
+    font-family: "Cinzel Decorative", serif;
+    font-weight: 400;
+    font-style: normal;
+    margin-bottom: 50px;
+    color: #1e2a41;
+  }
+  
+  .subtitle-section {
+    font-size: 1.3em;
+    font-style: italic;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #1e2a41;
+    margin-bottom: 30px;
+  }
+  .add-resources-section {
+    color: #1e2a41;
+    text-align: center;
+    padding: 60px 10%;
+  }
+  
+  .add-resources-section h1 {
+    font-size: 4em;
+    font-family: "Cinzel Decorative", serif;
+    font-weight: 400;
+    font-style: normal;
+    margin-bottom: 50px;
+    color: #1e2a41;
+  }
+  .subtitle {
+    font-size: 1.3em;
+    font-style: italic;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #1e2a41;
+    margin-bottom: 30px;
+  }
+  
+  .add-resource-button {
+    font-family: "Cinzel Decorative", serif;
+    font-weight: 400;
+    font-style: normal;
+    background-color: #1e2a41;
+    color: white;
+    font-size: 1em;
+    font-weight: bold;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  
+  .add-resource-button:hover {
+    background-color: #475163;
+  }
+  
+  footer {
+    background-color: #ffffff;
+    color: #09141a;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .footer {
+    background-color: white;
+    padding: 50px 10%;
+  }
+  
+  .footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
+  .footer-about {
+    max-width: 300px;
+  }
+  
+  .footer-logo {
+    width: 150px;
+    margin-bottom: 15px;
+  }
+  
+  .footer-about p {
+    font-size: 14px;
+    color: #09141a;
+    line-height: 1.6;
+  }
+  
+  .footer-links {
+    display: flex;
+    gap: 50px;
+  }
+  
+  .footer-column h3 {
+    font-size: 16px;
+    margin-bottom: 15px;
+    color: #09141a;
+  }
+  
+  .footer-column a {
+    display: block;
+    font-size: 14px;
+    color: #15242c;
+    text-decoration: none;
+    margin-bottom: 8px;
+    transition: color 0.3s;
+  }
+  
+  .footer-column a:hover {
+    color: rgb(0, 0, 0);
+  }
+  
+  .footer-quick-links h3 {
+    font-size: 16px;
+    margin-bottom: 15px;
+    color: #09141a;
+  }
+  
+  .apply-btn {
+    display: block;
+    background-color: #09141a;
+    color: #ffffff;
+    padding: 12px 25px;
+    border-radius: 25px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    margin-bottom: 10px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .apply-btn:hover {
+    background-color: #870017;
+  }
+  
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  .dropdown-content a:hover {
+    background-color: #ddd;
+  }
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
